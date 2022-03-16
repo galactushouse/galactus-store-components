@@ -1,0 +1,92 @@
+.cardLink {
+  text-decoration: none;
+}
+
+.cardContainer {
+  width: 250px;
+  height: 450px;
+  font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+  font-weight: normal;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(-5, 5, 5, 0.06);
+}
+
+.topSubcontainer {
+  width: 100%;
+  height: 60%;
+  border-radius: 15px;
+  padding: 15px;
+  color: #21211f;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.imageContainer img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.titleContainer {
+  width: 100%;
+  height: 37px;
+}
+
+.titleContainer h2 {
+  height: 100%;
+  font-size: 25px;
+  line-height: 37px;
+}
+
+.bottomSubcontainer {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #21211f;
+  color: #fff;
+}
+
+.priceContainer {
+  width: 100%;
+  height: 37px;
+}
+
+.priceContainer p {
+  height: 100%;
+  font-size: 25px;
+  line-height: 37px;
+  font-weight: 600;
+}
+
+.buttonContainer {
+  width: 100%;
+  height: 50px;
+}
+
+.buttonContainer button {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: #666666;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buttonContainer button:hover {
+  background-color: #5f5f5f;
+}
