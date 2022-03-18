@@ -1,37 +1,54 @@
-import './styles.css'
+import "./styles.css";
 
 function ProductCard({
   customContents: {
     imageUrl,
     productTitle,
-    salePrice,
+    sellingPrice,
+    productLogoImage,
+    scratchedPrice,
     currencyPrice,
     buttonText,
-    productLink
-  }
+    productLink,
+    addToCartFunction,
+  },
 }: ProductCardProps) {
-  return(
-    <a className="cardLink" href={productLink}>
-      <div className="cardContainer">
-          <div className="topSubcontainer">
-            <div className="imageContainer">
-              <img src={imageUrl} alt={productTitle} />
-            </div>
-            <div className="titleContainer">
-              <h2>{productTitle}</h2>
-            </div>
+  return (
+    <div className="cardContainer">
+      <a className="cardLink" href={productLink}>
+        <div className="topSubcontainer">
+          <div className="imageContainer">
+            <img src={imageUrl} alt={productTitle} />
           </div>
-          <div className="bottomSubcontainer">
-            <div className="priceContainer">
-              <p>{currencyPrice} {salePrice}</p>
-            </div>
-            <div className="buttonContainer">
-              <button>{buttonText}</button>
-            </div>
+          <div className="titleContainer">
+            <h2>{productTitle}</h2>
           </div>
+        </div>
+        <div className="bottomSubcontainer">
+          {productLogoImage && (
+            <img
+              className="productLogoImage"
+              src={productLogoImage}
+              alt={productTitle}
+            />
+          )}
+          <div className="priceContainer">
+            {scratchedPrice && (
+              <span>
+                {currencyPrice} {scratchedPrice}
+              </span>
+            )}
+            <p>
+              {currencyPrice} {sellingPrice}
+            </p>
+          </div>
+        </div>
+      </a>
+      <div className="buttonContainer">
+        <button onClick={addToCartFunction}>{buttonText}</button>
       </div>
-    </a>
-  )
+    </div>
+  );
 }
 
-export default ProductCard
+export default ProductCard;
