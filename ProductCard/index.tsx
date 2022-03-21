@@ -1,51 +1,76 @@
+import { useState } from "react";
+
 import "./styles.css";
 
-function ProductCard({
-  customContents: {
-    imageUrl,
-    productTitle,
-    sellingPrice,
-    productLogoImage,
-    scratchedPrice,
-    currencyPrice,
-    buttonText,
-    productLink,
-    addToCartFunction,
-  },
-}: ProductCardProps) {
+function ProductCard({ productData, customContents }: ProductCardProps) {
+  const { title, brand, price, slug, sku } = productData;
+  const [color, setColor] = useState(sku[0].hexadecimalColor);
+  const [size, setSize] = useState(sku[0].sizes?.slice(0, 1)[0]);
+  
+  const handleSku = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setColor(event.currentTarget.value);
+  };
+  
+  const handleSize = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setSize(event.currentTarget.value);
+  };
+  
+  const currentSkuIndex = sku.filter(sku => sku.hexadecimalColor === color);
+
   return (
     <div className="cardContainer">
-      <a className="cardLink" href={productLink}>
+      <a className="cardLink" href={slug}>
         <div className="topSubcontainer">
+          {brand?.image && (
+            <img className="brandImageUrl" src={brand.image} alt={title} />
+          )}
           <div className="imageContainer">
-            <img src={imageUrl} alt={productTitle} />
+            <img src={currentSkuIndex[0].image} alt={title} />
           </div>
           <div className="titleContainer">
-            <h2>{productTitle}</h2>
+            <h2>{title}</h2>
           </div>
         </div>
         <div className="bottomSubcontainer">
-          {productLogoImage && (
-            <img
-              className="productLogoImage"
-              src={productLogoImage}
-              alt={productTitle}
-            />
-          )}
+          <div className="colorPickerContainer">
+            {sku.map((sku, index) => (
+              <button
+                className={`${currentSkuIndex[0].hexadecimalColor === sku.hexadecimalColor && 'active'}`}
+                key={index}
+                style={{ backgroundColor: sku.hexadecimalColor }}
+                onClick={handleSku}
+                value={sku.hexadecimalColor}
+              />
+            ))}
+          </div>
+          <div className="sizePickerContainer">
+            {currentSkuIndex[0].sizes?.map((sizes, index) => (
+              <button
+                className={`${sizes === size && 'active'}`}
+                key={index}
+                onClick={handleSize}
+                value={sizes}
+              >{sizes}</button>
+            ))}
+          </div>
           <div className="priceContainer">
-            {scratchedPrice && (
+            {price.scratchedPrice && (
               <span>
-                {currencyPrice} {scratchedPrice}
+                {price.currencyPrice} {price.scratchedPrice}
               </span>
             )}
             <p>
-              {currencyPrice} {sellingPrice}
+              {price.currencyPrice} {price.sellingPrice}
             </p>
           </div>
         </div>
       </a>
       <div className="buttonContainer">
-        <button onClick={addToCartFunction}>{buttonText}</button>
+        <button onClick={customContents.addToCartFunction}>
+          {customContents.buttonText}
+        </button>
       </div>
     </div>
   );
