@@ -20,24 +20,23 @@
   color: #21211f;
 }
 
+.brandImageUrl {
+  height: 20px;
+  padding: 2px 0;
+}
+
 .imageContainer {
   width: 100%;
-  height: 70%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
   overflow: hidden;
 }
 
 .imageContainer img {
   height: 100%;
   object-fit: cover;
-  transition: 0.3s;
-}
-
-.cardLink:hover .imageContainer img {
-  transform: rotate(-15deg);
 }
 
 .titleContainer {
@@ -49,7 +48,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 23px;
   line-height: 33px;
 }
 
@@ -66,9 +65,24 @@
   color: #fff;
 }
 
-.productLogoImage {
-  width: 40px;
-  margin: 2px 0 10px 0;
+.sizePickerContainer,
+.colorPickerContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3px;
+}
+
+.colorPickerContainer button {
+  width: 15px;
+  height: 15px;
+  border: none;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.colorPickerContainer .active {
+  border: 2px solid #fff;
 }
 
 .priceContainer {
@@ -77,15 +91,13 @@
 }
 
 .priceContainer span {
-  font-size: 16px;
+  font-size: 14px;
   color: #666666;
   text-decoration: line-through;
 }
 
 .priceContainer p {
-  height: 100%;
-  font-size: 25px;
-  line-height: 37px;
+  font-size: 20px;
   font-weight: 600;
 }
 
