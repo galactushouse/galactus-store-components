@@ -22,7 +22,7 @@ interface CustomContentsProps {
   addToCartFunction: () => void;
 }
 
-interface ProductCardProps {
+interface ModernProductCardProps {
   productData: ProductDataProps;
   customContents: customContentsProps;
 }
