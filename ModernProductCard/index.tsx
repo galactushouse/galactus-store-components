@@ -2,22 +2,23 @@ import { useState } from "react";
 
 import "./styles.css";
 
-function ProductCard({ productData, customContents }: ProductCardProps) {
+function ModernProductCard({ productData, customContents }: ModernProductCardProps) {
   const { title, brand, price, slug, sku } = productData;
   const [color, setColor] = useState(sku[0].hexadecimalColor);
-  const [size, setSize] = useState(sku[0].sizes?.slice(0, 1)[0]);
-  
+  const [size, setSize] = useState("0");
+
   const handleSku = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setColor(event.currentTarget.value);
+    setSize("0");
   };
-  
+
   const handleSize = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setSize(event.currentTarget.value);
   };
-  
-  const currentSkuIndex = sku.filter(sku => sku.hexadecimalColor === color);
+
+  const currentSkuIndex = sku.filter((sku) => sku.hexadecimalColor === color);
 
   return (
     <div className="cardContainer">
@@ -37,7 +38,10 @@ function ProductCard({ productData, customContents }: ProductCardProps) {
           <div className="colorPickerContainer">
             {sku.map((sku, index) => (
               <button
-                className={`${currentSkuIndex[0].hexadecimalColor === sku.hexadecimalColor && 'active'}`}
+                className={`${
+                  currentSkuIndex[0].hexadecimalColor ===
+                    sku.hexadecimalColor && "active"
+                }`}
                 key={index}
                 style={{ backgroundColor: sku.hexadecimalColor }}
                 onClick={handleSku}
@@ -48,11 +52,13 @@ function ProductCard({ productData, customContents }: ProductCardProps) {
           <div className="sizePickerContainer">
             {currentSkuIndex[0].sizes?.map((sizes, index) => (
               <button
-                className={`${sizes === size && 'active'}`}
+                className={`${sizes === size && "active"}`}
                 key={index}
                 onClick={handleSize}
                 value={sizes}
-              >{sizes}</button>
+              >
+                {sizes}
+              </button>
             ))}
           </div>
           <div className="priceContainer">
@@ -68,7 +74,10 @@ function ProductCard({ productData, customContents }: ProductCardProps) {
         </div>
       </a>
       <div className="buttonContainer">
-        <button onClick={customContents.addToCartFunction}>
+        <button
+          className={`${size === "0" && "disabledButton"}`}
+          onClick={size !== "0" ? customContents.addToCartFunction : null}
+        >
           {customContents.buttonText}
         </button>
       </div>
@@ -76,4 +85,4 @@ function ProductCard({ productData, customContents }: ProductCardProps) {
   );
 }
 
-export default ProductCard;
+export default ModernProductCard;
