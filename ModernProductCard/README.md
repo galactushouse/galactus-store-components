@@ -4,6 +4,6 @@ ModernProductCard is a ready-to-use product card component for your e-commerce. 
 
 ## Preview
 
-<a href="https://reactjs.org/" target="_blank">
+<a>
   <img align="left" alt="Component" height="600" src=".github/component.png" />
 </a>
