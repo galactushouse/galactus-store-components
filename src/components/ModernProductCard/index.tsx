@@ -1,28 +1,31 @@
-import { useState } from "react";
+import * as React from 'react'
+import { useState } from 'react'
 
-import "./styles.css";
+import './styles.scss'
 
-function ModernProductCard({
+import type { ModernProductCardProps } from './typings/modernProductCard'
+
+const ModernProductCard = ({
   productData,
   customContents,
-  customStyles,
-}: ModernProductCardProps) {
-  const { title, brand, price, slug, sku } = productData;
-  const [color, setColor] = useState(sku[0].hexadecimalColor);
-  const [size, setSize] = useState("0");
+  customStyles
+}: ModernProductCardProps) => {
+  const { title, brand, price, slug, sku } = productData
+  const [color, setColor] = useState(sku[0].hexadecimalColor)
+  const [size, setSize] = useState('0')
 
   const handleSku = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setColor(event.currentTarget.value);
-    setSize("0");
-  };
+    event.preventDefault()
+    setColor(event.currentTarget.value)
+    setSize('0')
+  }
 
   const handleSize = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setSize(event.currentTarget.value);
-  };
+    event.preventDefault()
+    setSize(event.currentTarget.value)
+  }
 
-  const currentSkuIndex = sku.filter((sku) => sku.hexadecimalColor === color);
+  const currentSkuIndex = sku.filter((sku) => sku.hexadecimalColor === color)
 
   return (
     <div style={customStyles.cardContainer} className="cardContainer">
@@ -50,11 +53,11 @@ function ModernProductCard({
                 style={{
                   backgroundColor: sku.hexadecimalColor,
                   ...customStyles.colorPicker,
-                  ...customStyles.activePicker,
+                  ...customStyles.activePicker
                 }}
                 className={`colorPicker ${
                   currentSkuIndex[0].hexadecimalColor ===
-                    sku.hexadecimalColor && "activePicker"
+                    sku.hexadecimalColor && 'activePicker'
                 }`}
                 key={index}
                 onClick={handleSku}
@@ -63,10 +66,10 @@ function ModernProductCard({
             ))}
           </div>
           <div style={customStyles.sizePicker} className="sizePickerContainer">
-            {currentSkuIndex[0].sizes?.map((sizes, index) => (
+            {currentSkuIndex[0].sizes.map((sizes, index) => (
               <button
                 style={customStyles.activePicker}
-                className={`sizePicker ${sizes === size && "activePicker"}`}
+                className={`sizePicker ${sizes === size && 'activePicker'}`}
                 key={index}
                 onClick={handleSize}
                 value={sizes}
@@ -91,16 +94,27 @@ function ModernProductCard({
         </div>
       </a>
       <div style={customStyles.buttonContainer} className="buttonContainer">
-        <button
-          style={customStyles.button}
-          className={`button ${size === "0" && "disabledButton"}`}
-          onClick={size !== "0" ? customContents.addToCartFunction : null}
-        >
-          {customContents.buttonText}
-        </button>
+        {size === '0' ? (
+          <button style={customStyles.button} className="button disabledButton">
+            {customContents.buttonText}
+          </button>
+        ) : (
+          <button
+            style={customStyles.button}
+            className="button"
+            onClick={() => {
+              customContents.addToCartFunction(
+                color,
+                size
+              )
+            }}
+          >
+            {customContents.buttonText}
+          </button>
+        )}
       </div>
     </div>
-  );
+  )
 }
 
-export default ModernProductCard;
+export default ModernProductCard

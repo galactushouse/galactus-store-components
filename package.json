@@ -1,0 +1,47 @@
+{
+  "name": "@galactushouse/galactus-store-components",
+  "version": "1.0.0",
+  "description": "Ready-to-use components in stores.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "start": "rollup -c -w"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galactushouse/galactus-store-components.git"
+  },
+  "keywords": [
+    "components",
+    "component",
+    "react",
+    "agnostic",
+    "commerce",
+    "e-commerce",
+    "store",
+    "galactushouse"
+  ],
+  "author": "Galactus House <galactushouse@gmail.com> (https://github.com/galactushouse)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/galactushouse/galactus-store-components/issues"
+  },
+  "homepage": "https://github.com/galactushouse/galactus-store-components/#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.6.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^2.70.1",
+    "rollup-plugin-sass": "^1.2.12",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.6.3"
+  }
+}

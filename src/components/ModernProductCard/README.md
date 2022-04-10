@@ -5,17 +5,17 @@ ModernProductCard is a ready-to-use product card component for your e-commerce. 
 ## Preview
 
 <div>
-  <img alt="Component" height="600" src=".github/component.png" />
+  <img alt="Component" height="600" src=".github/modern-product-card.png" />
 </div>
 
 ## Usage
 
 ### Install
 
-Install the `galactus-store-components` library:
+Install the `gh-modern-product-card` library:
 
-```sh
-npm install galactus-store-components
+```shell
+npm install gh-modern-product-card
 ```
 
 ### Import
@@ -23,7 +23,7 @@ npm install galactus-store-components
 Import the component on your page or inside another component:
 
 ```javascript
-import { ModernProductCard } from 'galactus-store-components'
+import ModernProductCard from 'gh-modern-product-card'
 ```
 
 ### Declaration
@@ -67,8 +67,8 @@ interface ProductDataProps {
   slug: string;
   sku: Array<{
     image: string;
-    hexadecimalColor?: string;
-    sizes?: Array<string>;
+    hexadecimalColor: string;
+    sizes: Array<string>;
   }>;
 }
 ```
@@ -78,14 +78,14 @@ interface ProductDataProps {
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
 | `buttonText` | `string` | | ✓ | Button card text |
-| `addToCartFunction` | `void` | | ✓ | Function that adds the product to the cart |
+| `addToCartFunction` | `void` | | ✓ | Function that adds the product to the cart (This function must receive the color and size of the chosen SKU) |
 
 **2 - customContents** typing structure:
 
 ```typescript
 interface CustomContentsProps {
   buttonText: string;
-  addToCartFunction: () => void;
+  addToCartFunction: (color: string, size: string) => void
 }
 ```
 
