@@ -44,11 +44,11 @@ Declare the component wherever you need it and pass the required props and custo
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `title` | `string` | | ✓ | Product title |
+| `title` | `string` | `-` | ✓ | Product title |
 | `brand` | `object` | `null` | ✗ | Product brand information, counting: `name` and `image` |
-| `price` | `object` | | ✓ | Product price information, counting `currencyPrice`, `sellingPrice` and `scratchedPrice` |
-| `slug` | `string` | | ✓ | Product slug |
-| `sku` | `array` | | ✓ |  Product sku information, counting `image`, `hexadecimalColor` and `sizes` |
+| `price` | `object` | `-` | ✓ | Product price information, counting `currencyPrice`, `sellingPrice` and `scratchedPrice` |
+| `slug` | `string` | `-` | ✓ | Product slug |
+| `sku` | `array` | `-` | ✓ |  Product sku information, counting `image`, `hexadecimalColor` and `sizes` |
 
 **1 - productData** typing structure:
 
@@ -77,8 +77,8 @@ interface ProductDataProps {
 
 | Prop | Type | Default | Required | Description |
 | --- | --- | --- | --- | --- |
-| `buttonText` | `string` | | ✓ | Button card text |
-| `addToCartFunction` | `void` | | ✓ | Function that adds the product to the cart (This function must receive the color and size of the chosen SKU) |
+| `buttonText` | `string` | `-` | ✓ | Button card text |
+| `addToCartFunction` | `void` | `-` | ✓ | Function that adds the product to the cart (This function must receive the color and size of the chosen SKU) |
 
 **2 - customContents** typing structure:
 
